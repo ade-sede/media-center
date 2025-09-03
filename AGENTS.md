@@ -1,0 +1,3 @@
+- After making changes to the flake, never ever deploy them without asking
+- This flake runs on a remote server you can access at ade-sede@media.ade-sede.com because your SSH key has already been pushed to the server
+- Services must run under root

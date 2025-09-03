@@ -1,0 +1,19 @@
+[general]
+ip = 0.0.0.0
+port = @PORT@
+base_url = @URL_BASE@
+path_mappings = []
+debug = False
+branch = master
+auto_update = True
+single_language = False
+minimum_score = 90
+use_scenename = True
+use_postprocessing = False
+postprocessing_cmd =
+use_sonarr = True
+use_radarr = True
+enabled_providers =
+login_required = False
+username =
+password =

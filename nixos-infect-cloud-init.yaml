@@ -1,0 +1,33 @@
+#cloud-config
+write_files:
+  - path: /etc/nixos/host.nix
+    permissions: '0644'
+    content: |
+      {pkgs, ...}: {
+        environment.systemPackages = with pkgs; [
+          vim
+          git
+          tmux
+          htop
+          curl
+          wget
+        ];
+        
+        services.openssh = {
+          enable = true;
+          settings.PermitRootLogin = "yes";
+        };
+        
+        networking.firewall = {
+          enable = true;
+          allowedTCPPorts = [ 22 80 443 ];
+        };
+        
+        system.autoUpgrade = {
+          enable = true;
+          channel = "nixos-24.11";
+        };
+      }
+
+runcmd:
+  - curl https://raw.githubusercontent.com/elitak/nixos-infect/master/nixos-infect | NIXOS_IMPORT=./host.nix NIX_CHANNEL=nixos-24.11 bash 2>&1 | tee /tmp/infect.log

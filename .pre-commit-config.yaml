@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+        language_version: system
+
+  - repo: local
+    hooks:
+      - id: alejandra
+        name: alejandra
+        entry: alejandra
+        language: system
+        files: \.nix$
+        
+      - id: mdformat
+        name: mdformat
+        entry: mdformat
+        language: system
+        files: \.md$
