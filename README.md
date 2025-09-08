@@ -108,3 +108,23 @@ export USERNAME=ade-sede
 # Copy SSH key for passwordless access
 ssh-copy-id $USERNAME@$SERVER_IP
 ```
+
+## Upgrading services
+
+To upgrade services (like systemctl-dashboard) to their latest versions:
+
+```bash
+# SSH to the server as root
+ssh root@media.ade-sede.com
+
+# Navigate to the nixos configuration directory
+cd /root/nixos
+
+# Update flake inputs to get latest versions
+nix --extra-experimental-features "nix-command flakes" flake update
+
+# Rebuild and switch to the new configuration
+nixos-rebuild switch --flake .#media-center
+```
+
+Services will automatically restart with the new versions during the rebuild process.
