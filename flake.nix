@@ -3,11 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    systemctl-dashboard.url = "github:ade-sede/systemctl-dashboard";
+    systemctl-dashboard.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
     self,
     nixpkgs,
+    systemctl-dashboard,
   }: let
     JUICE_FS_ROOT = "/mnt/juice";
     ADMIN_EMAIL = "adrien.de.sede@gmail.com";
@@ -29,6 +32,7 @@
         ./nix/network.nix
         ./nix/users.nix
         ./nix/media-center.nix
+        systemctl-dashboard.nixosModules.default
       ];
     };
   };

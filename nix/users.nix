@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   users.groups.juicefs = {};
+
+  users.users.root.home = lib.mkForce "/root";
 
   users.users.ade-sede = {
     isNormalUser = true;
