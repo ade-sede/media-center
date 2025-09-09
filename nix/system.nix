@@ -22,6 +22,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    bash
     vim
     git
     curl
